@@ -8,14 +8,26 @@ const getClient = function getClient(address) {
 };
 
 function main() {
-  const dataClient = getClient('127.0.0.1:3000');
-  dataClient.search({ id: 1 }, (err, res) => {
-    if (err) {
-      return console.log(err);
+  const dataClient = getClient('0.0.0.0:3000');
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(index => {
+    if (index % 2 === 0) {
+      return dataClient.search2({ id: 1 }, (err, res) => {
+        if (err) {
+          return console.log(err);
+        }
+    
+        return console.log('Search2 result', index, 'result:', res);
+      });
     }
-
-    return console.log('Query result', res);
+    return dataClient.search({ id: 1 }, (err, res) => {
+      if (err) {
+        return console.log(err);
+      }
+  
+      return console.log('Search result', index, 'result:', res);
+    });
   });
+  
 }
 
 main();

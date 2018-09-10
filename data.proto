@@ -2,9 +2,14 @@ syntax = "proto3";
 
 service data {
   rpc search(SearchPayload) returns (Result) {}
+  rpc search2(Search2Payload) returns (Result) {}
 }
 
 message SearchPayload {
+  int32 id = 1;
+}
+
+message Search2Payload {
   int32 id = 1;
 }
 

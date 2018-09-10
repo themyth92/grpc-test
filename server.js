@@ -14,6 +14,12 @@ class Data {
       return callback(null, { message: internalIp.v4.sync() });
     }, 5000);
   }
+
+  search2(call, callback) {
+    setTimeout(function() {
+      return callback(null, { message: internalIp.v4.sync() });
+    }, 5000);
+  }
 }
 
 function getServer(service, serviceCall, listener) {
