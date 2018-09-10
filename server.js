@@ -24,7 +24,8 @@ function getServer(service, serviceCall, listener) {
 }
 
 function main() {
-  const dataServer = getServer(data.service, new Data, 'localhost:3000');
+  // NOTE: must use 0.0.0.0, dont use localhost
+  const dataServer = getServer(data.service, new Data, '0.0.0.0:3000');
   dataServer.start();
 }
 
