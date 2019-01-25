@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sds-deployment
+  labels:
+    app: sds
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sds-app
+  template:
+    metadata:
+      labels:
+        app: sds-app
+    spec:
+      containers:
+        - name: sds-app
+          image: themyth92/sds:test
+          imagePullPolicy: IfNotPresent 
+          ports:
+            - name: http
+              containerPort: 2800

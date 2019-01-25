@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-envoy
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 4000
+      targetPort: 4000
+      protocol: TCP
+  selector:
+    app: myapp-envoy
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-nodeport
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 4000
+      nodePort: 30000
+      protocol: TCP
+  selector:
+    app: myapp-envoy
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-nodeport-envoy-admin
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 9901
+      nodePort: 30001
+      protocol: TCP
+  selector:
+    app: myapp-envoy

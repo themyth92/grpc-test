@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: myapp-envoy
+  labels:
+    app: myapp-envoy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-envoy
+  template:
+    metadata:
+      labels:
+        app: myapp-envoy
+    spec:
+      containers:
+        - name: myapp-envoy
+          image: themyth92/envoy:test
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 4000
+            - name: envoy-admin
+              containerPort: 9901

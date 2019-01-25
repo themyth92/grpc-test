@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sds-service
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 2800
+      targetPort: 2800
+      protocol: TCP
+  selector:
+    app: sds-app
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sds-nodeport
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 2800
+      targetPort: 2800
+      nodePort: 30002
+      protocol: TCP
+  selector:
+    app: sds-app

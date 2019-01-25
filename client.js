@@ -12,8 +12,8 @@ const getHealth = function getHealth(address) {
 }
 
 function main() {
-  const dataClient = getClient('0.0.0.0:3000');
-  const healthClient = getHealth('0.0.0.0:3000');
+  const dataClient = getClient('0.0.0.0:30000');
+  const healthClient = getHealth('0.0.0.0:30000');
 
   return dataClient.search({ id: 1 }, (err, res) => {
     if (err) {
