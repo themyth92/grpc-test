@@ -1,23 +1,23 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sds-deployment
+  name: client-deployment
   labels:
-    app: sds
+    app: client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sds-app
+      app: client-app
   template:
     metadata:
       labels:
-        app: sds-app
+        app: client-app
     spec:
       containers:
-        - name: sds-app
-          image: themyth92/sds:test
-          imagePullPolicy: Always 
+        - name: client-app
+          image: themyth92/client:test
+          imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 2800
+              containerPort: 3000

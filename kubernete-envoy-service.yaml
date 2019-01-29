@@ -17,6 +17,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: myapp-nodeport
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: eks-test-grpc.local
 spec:
   type: NodePort
   ports:

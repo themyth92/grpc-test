@@ -17,7 +17,6 @@ app.post(`/v2/discovery:endpoints`, (req, res) => {
     .ca(cert)
     .set('Authorization', `Bearer ${token}`)
     .then(r => {
-      console.log(r.body);
       const endpoint = r.body.subsets[0].addresses;
       const hosts = [];
 
@@ -34,6 +33,8 @@ app.post(`/v2/discovery:endpoints`, (req, res) => {
         })
       });
 
+      console.log(hosts)
+
       res.json({
         version_info: 'v1',
         resources: [{
@@ -44,8 +45,6 @@ app.post(`/v2/discovery:endpoints`, (req, res) => {
           }]
         }]
       });
-
-      res.json({ hosts })
     })
     .catch(err => {
       console.log(err);

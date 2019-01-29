@@ -1,0 +1,7 @@
+FROM mhart/alpine-node:10
+RUN npm install -g yarn
+COPY package.json client.js data.proto health.proto ./
+RUN yarn
+
+CMD [ "node", "client.js" ]
+  

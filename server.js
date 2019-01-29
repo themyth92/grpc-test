@@ -8,17 +8,22 @@ const dataPackageDefinition = protoLoader.loadSync(path.join(__dirname, '/data.p
 const healthPackageDefinition = protoLoader.loadSync(path.join(__dirname, '/health.proto'));
 const data = grpcLibrary.loadPackageDefinition(dataPackageDefinition).data;
 const health = grpcLibrary.loadPackageDefinition(healthPackageDefinition).grpc.health.v1.Health;
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+const val = getRandomInt(1000);
 
 class Data {
   search(call, callback) {
     setTimeout(function() {
-      return callback(null, { message: internalIp.v4.sync() });
+      return callback(null, { message: val });
     }, 5000);
   }
 
   search2(call, callback) {
     setTimeout(function() {
-      return callback(null, { message: internalIp.v4.sync() });
+      return callback(null, { message: val });
     }, 5000);
   }
 }

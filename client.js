@@ -38,4 +38,6 @@ function main() {
   });
 }
 
-main();
+setInterval(() => {
+  main();
+}, 30000);
